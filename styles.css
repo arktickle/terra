@@ -719,3 +719,40 @@ body.theme-light .modal__thumbnails img.is-active {
     height: auto;
   }
 }
+
+
+.site-footer {
+  position: fixed;
+  right: clamp(16px, 4vw, 48px);
+  bottom: clamp(16px, 4vw, 32px);
+  max-width: min(320px, 26vw);
+  z-index: 1100;
+  pointer-events: none;
+}
+
+.site-footer__notice {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.62);
+  text-align: right;
+  pointer-events: auto;
+}
+
+body.theme-light .site-footer__notice {
+  color: rgba(32, 36, 48, 0.68);
+}
+
+@media (max-width: 56em) {
+  .site-footer {
+    max-width: min(360px, 80vw);
+    right: clamp(12px, 6vw, 24px);
+    bottom: clamp(12px, 6vw, 24px);
+  }
+
+  .site-footer__notice {
+    text-align: center;
+  }
+}
+

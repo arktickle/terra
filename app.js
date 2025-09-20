@@ -3,6 +3,7 @@ const emptyState = document.getElementById("emptyState");
 const previewTitle = document.getElementById("previewTitle");
 const previewDescription = document.getElementById("previewDescription");
 const previewMeta = document.getElementById("previewMeta");
+const previewPanelRoot = document.querySelector(".preview-panel");
 
 const modal = document.getElementById("modal");
 const modalBackdrop = document.getElementById("modalBackdrop");
@@ -425,15 +426,21 @@ function openModal(mangaIndex, pageIndex) {
   modal.classList.add("is-active");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  document.body.classList.add("modal-open");
+  if (previewPanelRoot) {
+    previewPanelRoot.setAttribute("aria-hidden", "true");
+  }
 }
-
 function closeModal() {
   modal.classList.remove("is-active");
   modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  document.body.classList.remove("modal-open");
+  if (previewPanelRoot) {
+    previewPanelRoot.removeAttribute("aria-hidden");
+  }
   releaseBackdrop();
 }
-
 function updateModal() {
   const manga = viewerState.list[viewerState.mangaIndex];
   const pageCount = manga.pages.length;
